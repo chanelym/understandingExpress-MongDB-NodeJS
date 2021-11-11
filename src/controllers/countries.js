@@ -45,8 +45,7 @@ exports.getUnique = async (req, res) => {
 };
 
 exports.create = async (req,res) => { 
-    validInput(res, req.body);
-    
+   
     await countriesModel.create(req.body).then(() => {
         res.status(200).json({ message: 'Country Successfully Created' });
     }).catch((err) => {
