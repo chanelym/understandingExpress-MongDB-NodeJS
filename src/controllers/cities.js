@@ -7,6 +7,22 @@ function validID(res, id) {
     }
 };
 
+function validInput(res, content) {
+    if (!req.body.name) {
+        res.status(400).json({ message: 'Name is Missing' });
+        return true;
+    } else if (!req.body.population) {
+        res.status(400).json({ message: 'Population Number is Missing' });
+        return true;
+    } else if (!req.body.language) {
+        res.status(400).json({ message: 'Mother Language is Missing' });
+        return true; 
+    } else if (!req.body.gbp) {
+        res.status(400).json({ message: 'Countrys GBP is Missing' });
+        return true;
+    }
+};
+
 exports.getAll = async (req, res) => {
     await citiesModel.find({}).then((cities) => {
         res.status(200).json(cities);
