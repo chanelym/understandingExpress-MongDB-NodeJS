@@ -1,4 +1,4 @@
-const countries = require('../models/countries');
+const countriesModel = require('../models/countries');
 
 function validID(res, id) {
     if (!req.params.id) {

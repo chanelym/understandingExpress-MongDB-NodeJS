@@ -1,4 +1,4 @@
-const cities = require('../models/cities');
+const citiesModel = require('../models/cities');
 
 function validID(res, id) {
     if (!req.params.id) {

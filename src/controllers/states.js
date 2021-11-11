@@ -1,4 +1,4 @@
-const states = require('../models/states');
+const statesModel = require('../models/states');
 
 function validID(res, id) {
     if (!req.params.id) {
