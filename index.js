@@ -8,13 +8,13 @@ Conn();
 
 const port = process.env.PORT || 3000;
 
-const countriesRoutes = require('./routes/countries.js');
+const countriesRoutes = require('./src/routes/countries.js');
 app.use('/countries', countriesRoutes);
 
-const statesRoutes = require('./routes/states.js');
+const statesRoutes = require('./src/routes/states.js');
 app.use('/states', statesRoutes);
 
-const citiesRoutes = require('./routes/cities.js');
+const citiesRoutes = require('./src/routes/cities');
 app.use('/cities', citiesRoutes);
 
 app.listen(port, () => {
