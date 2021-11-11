@@ -1,5 +1,12 @@
 const cities = require('../models/cities');
 
+function validID(res, id) {
+    if (!req.params.id) {
+        res.status(400).json({message: 'URLs ID is Missing' });
+        return;
+    }
+};
+
 exports.getAll = async (req, res) => {
     await citiesModel.find({}).then((cities) => {
         res.status(200).json(cities);
@@ -10,9 +17,7 @@ exports.getAll = async (req, res) => {
 };
 
 exports.getUnique = async (req, res) => {
-    const name = req.params.name;
-
-    await citiesModel.findOne({ name: name }).then((cities) => {
+    await citiesModel.findOne({ name: req.params.name }).then((cities) => {
         if (cities == null) { 
             res.status(404).json({ message: 'City Not Found' });
         } else {
@@ -24,6 +29,7 @@ exports.getUnique = async (req, res) => {
 };
 
 exports.create = async (req,res) => { 
+    validID(res, req.params.id);
 
     if (!req.body.name) {
         res.status(400).json({ message: 'Name is Missing' });
@@ -48,11 +54,8 @@ exports.create = async (req,res) => {
 };
 
 exports.update = async (req,res) => {
-    const id = req.params.id;
-    if (!id) {
-        res.status(400).json({message: 'URLs ID is Missing' });
-        return;
-    } else if (!req.body.name) {
+    
+    if (!req.body.name) {
         res.status(400).json({ message: 'Name is Missing' });
         return;
     } else if (!req.body.qttydistricts) {

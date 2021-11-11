@@ -1,5 +1,12 @@
 const countries = require('../models/countries');
 
+function validID(res, id) {
+    if (!req.params.id) {
+        res.status(400).json({message: 'URLs ID is Missing' });
+        return;
+    }
+};
+
 exports.getAll = async (req, res) => {
     await countriesModel.find({}).then((countries) => {
         res.status(200).json(countries);
@@ -22,6 +29,7 @@ exports.getUnique = async (req, res) => {
 };
 
 exports.create = async (req,res) => { 
+    validID(res, req.params.id);
 
     if (!req.body.name) {
         res.status(400).json({ message: 'Name is Missing' });
