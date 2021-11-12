@@ -6,6 +6,8 @@ const app = express();
 const Conn = require('./src/config/db');
 Conn();
 
+app.use(express.json());
+
 const port = process.env.PORT || 3000;
 
 const countriesRoutes = require('./src/routes/countries.js');

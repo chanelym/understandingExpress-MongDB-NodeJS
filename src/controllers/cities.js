@@ -1,30 +1,33 @@
-const citiesModel = require('../models/cities');
+const cities = require('../models/cities');
 
-function validID(res, id) {
+function validateID(req, res) {
     if (!req.params.id) {
         res.status(400).json({message: 'URLs ID is Missing' });
-        return;
+        return true;
+    } else if (!req.params.id != 24) {
+        res.status(400).json({message: 'URLs ID needs 24 characters' });
+        return true;
     }
 };
 
-function validInput(res, content) {
+function validateInput(req, res) {
     if (!req.body.name) {
-        res.status(400).json({ message: 'Name is Missing' });
+        res.status(403).json({ message: 'Name is Missing' });
         return true;
     } else if (!req.body.population) {
-        res.status(400).json({ message: 'Population Number is Missing' });
+        res.status(403).json({ message: 'Population Number is Missing' });
         return true;
     } else if (!req.body.language) {
-        res.status(400).json({ message: 'Mother Language is Missing' });
-        return true; 
+        res.status(403).json({ message: 'Mother Language is Missing' });
+        return true;
     } else if (!req.body.gbp) {
-        res.status(400).json({ message: 'Countrys GBP is Missing' });
+        res.status(403).json({ message: 'Countrys GBP is Missing' });
         return true;
     }
 };
 
 exports.getAll = async (req, res) => {
-    await citiesModel.find({}).then((cities) => {
+    await cities.find({}).then((cities) => {
         res.status(200).json(cities);
     }).catch((err) => {
         res.status(404).json({ message: 'Nothing Found Here' });
@@ -33,7 +36,7 @@ exports.getAll = async (req, res) => {
 };
 
 exports.getUnique = async (req, res) => {
-    await citiesModel.findOne({ name: req.params.name }).then((cities) => {
+    await cities.findOne({ name: req.params.name }).then((cities) => {
         if (cities == null) { 
             res.status(404).json({ message: 'City Not Found' });
         } else {
@@ -61,7 +64,7 @@ exports.create = async (req,res) => {
         return;
     }
 
-    await citiesModel.create(req.body).then(() => {
+    await cities.create(req.body).then(() => {
         res.status(200).json({ message: 'City Successfully Created' });
     }).catch((err) => {
         res.status(400).json({ message: 'Oops! Something went Wrong' });
@@ -85,7 +88,7 @@ exports.update = async (req,res) => {
         return;
     }
 
-    await citiesModel.updateOne({ _id:id}, req.body).then(() => { 
+    await cities.updateOne({ _id:id}, req.body).then(() => { 
         res.status(200).json({ message: 'City Successfully Updated' });
     }).catch((err) => {
         console.error(err);
@@ -95,7 +98,7 @@ exports.update = async (req,res) => {
 
 exports.delete = async (req,res) => {
     if (req.params.id.length == 24) { 
-        await citiesModel.deleteOne({_id:req.params.id}).then(() => { 
+        await cities.deleteOne({_id:req.params.id}).then(() => { 
             res.status(200).json({ message: 'City Successfully Removed!' });
         }).catch((err) => {
             console.error(err);

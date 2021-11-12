@@ -1,7 +1,7 @@
 const statesModel = require('../models/states');
 
 function validID(res, id) {
-    if (!req.params.id) {
+    if (req.params.id) {
         res.status(400).json({message: 'URLs ID is Missing' });
         return;
     }
