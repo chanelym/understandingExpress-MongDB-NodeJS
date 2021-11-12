@@ -10,10 +10,10 @@ app.use(express.json());
 
 const port = process.env.PORT || 3000;
 
-const countriesRoutes = require('./src/routes/countries.js');
+const countriesRoutes = require('./src/routes/countries');
 app.use('/countries', countriesRoutes);
 
-const statesRoutes = require('./src/routes/states.js');
+const statesRoutes = require('./src/routes/states');
 app.use('/states', statesRoutes);
 
 const citiesRoutes = require('./src/routes/cities');

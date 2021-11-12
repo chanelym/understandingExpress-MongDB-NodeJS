@@ -1,19 +1,21 @@
 const express = require('express');
 const router = express.Router();
-const statesController = require('../controllers/states');
+
+const StateController = require('../controllers/states');
+const stateController = new StateController;
 
 router.get('/', (req, res) => {
     res.status(200).json({ message: 'Welcome to States Route'});
 });
 
-router.get('/listall', statesController.getstates);
+router.get('/listall', stateController.getStates);
 
-router.get('/listname/:name', statesController.getStateByName);
+router.get('/listname/:name', stateController.getStateByName);
 
-router.post('/add', statesController.createStats);
+router.post('/add', stateController.createState);
 
-router.put('/update/:id', statesController.updateState);
+router.put('/update/:id', stateController.updateStateByID);
 
-router.delete('/del/:id', statesController.deleteStateByID);
+router.delete('/del/:id', stateController.deleteStateByID);
 
 module.exports = router;

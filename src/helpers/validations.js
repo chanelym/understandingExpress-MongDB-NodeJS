@@ -1,4 +1,4 @@
-export function validateInput(req, res) {
+function validateInput(req, res) {
     if (!req.body.name || !req.body.population || !req.body.language || !req.body.gbp) {
         res.status(403).json({ message: 'One or more fields is missing.' });
         return true;
@@ -11,7 +11,7 @@ export function validateInput(req, res) {
     }
 };
 
-export function validateURLID(req, res) {
+function validateURLID(req, res) {
     const id = req.params.id;
         
     if (id.length != 24) {

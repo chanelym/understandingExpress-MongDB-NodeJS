@@ -3,7 +3,7 @@ const validations = require('../helpers/validations');
 
 class stateController {
 
-    getstates = async (req, res) => {
+    getStates = async (req, res) => {
         await states.find({}).then((states) => {
             res.status(200).json(states);
         })

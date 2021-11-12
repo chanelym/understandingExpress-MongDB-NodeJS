@@ -3,7 +3,7 @@ const validations = require('../helpers/validations');
 
 class cityController {
 
-    getcities = async (req, res) => {
+    getCities = async (req, res) => {
         await cities.find({}).then((cities) => {
             res.status(200).json(cities);
         })
