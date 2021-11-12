@@ -6,14 +6,14 @@ router.get('/', (req, res) => {
     res.status(200).json({ message: 'Welcome to Cities Route'});
 });
 
-router.get('/listAll', citiesController.getAll);
+router.get('/listall', citiesController.getcities);
 
-router.get('/listName/:name', citiesController.getUnique);
+router.get('/listname/:name', citiesController.getCityByName);
 
-router.post('/add', citiesController.create);
+router.post('/add', citiesController.createCity);
 
-router.put('/update/:id', citiesController.update);
+router.put('/update/:id', citiesController.updateCity);
 
-router.delete('/del/:id', citiesController.delete);
+router.delete('/del/:id', citiesController.deleteCityByID);
 
 module.exports = router;

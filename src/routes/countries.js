@@ -6,14 +6,14 @@ router.get('/', (req, res) => {
     res.status(200).json({ message: 'Welcome to Countries Route'});
 });
 
-router.get('/listall', countriesController.getAll);
+router.get('/listall', countriesController.getCountries);
 
-router.get('/listname/:name', countriesController.getUnique);
+router.get('/listname/:name', countriesController.getCountryByName);
 
-router.post('/add', countriesController.create);
+router.post('/add', countriesController.createCountry);
 
-router.put('/update/:id', countriesController.update);
+router.put('/update/:id', countriesController.updateCountry);
 
-router.delete('/del/:id', countriesController.delete);
+router.delete('/del/:id', countriesController.deleteCountryByID);
 
 module.exports = router;

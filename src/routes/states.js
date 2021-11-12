@@ -6,14 +6,14 @@ router.get('/', (req, res) => {
     res.status(200).json({ message: 'Welcome to States Route'});
 });
 
-router.get('/listAll', statesController.getAll);
+router.get('/listall', statesController.getstates);
 
-router.get('/listName/:name', statesController.getUnique);
+router.get('/listname/:name', statesController.getStateByName);
 
-router.post('/add', statesController.create);
+router.post('/add', statesController.createStats);
 
-router.put('/update/:id', statesController.update);
+router.put('/update/:id', statesController.updateState);
 
-router.delete('/del/:id', statesController.delete);
+router.delete('/del/:id', statesController.deleteStateByID);
 
 module.exports = router;
