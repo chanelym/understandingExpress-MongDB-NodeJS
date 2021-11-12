@@ -15,7 +15,7 @@ function validateURLID(req, res) {
     const id = req.params.id;
         
     if (id.length != 24) {
-        res.status(403).json({message: 'IS URL needs 24 characters' });
+        res.status(403).json({message: 'ID URL needs 24 characters' });
         return true;
     } 
 };
