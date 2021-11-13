@@ -1,13 +1,19 @@
-exports.validateInput = (req, res) => {
+exports.validateInputCountry = (req, res) => {
     if (!req.body.name || !req.body.population || !req.body.language || !req.body.gbp) {
         res.status(403).json({ message: 'One or more fields is missing.' });
         return true;
     }
-        if (!req.body.name || !req.body.district || !req.body.population || !req.body.minwage) {
+};
+    
+exports.validateInputState = (req, res) => {
+    if (!req.body.name || !req.body.district || !req.body.population || !req.body.minwage) {
         res.status(403).json({ message: 'One or more fields is missing.' });
         return true;
-    }
-        if (!req.body.name || !req.body.qttydistricts || !req.body.population || !req.body.birthday) {
+    } 
+};
+    
+exports.validateInputCity = (req, res) => {
+    if (!req.body.name || !req.body.qttydistricts || !req.body.population || !req.body.birthday) {
         res.status(403).json({ message: 'One or more fields is missing.' });
         return true;
     } 

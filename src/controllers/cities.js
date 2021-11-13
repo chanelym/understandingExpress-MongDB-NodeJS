@@ -19,7 +19,7 @@ class cityController {
     };
 
     createCity = async (req, res) => {
-        validations.validateInput(req, res);
+        validations.validateInputCity(req, res);
 
         await cities.create(req.body).then(() => {
             res.status(200).json({ message: 'City Successfully Created' });
@@ -31,7 +31,7 @@ class cityController {
 
     updateCityByID = async (req,res) => {
         validations.validateURLID(req, res);
-        validations.validateInput(req, res);
+        validations.validateInputCity(req, res);
 
         await cities.findByIdAndUpdate( req.params.id, req.bod ).then(() => { 
             res.status(200).json({ message: 'City Successfully Updated' });
