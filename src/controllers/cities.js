@@ -2,7 +2,7 @@ const cities = require('../models/cities');
 // const validations = require('../helpers/validations');
 
 function validateInput(req, res) {
-    if (!req.body.name || !req.body.district || !req.body.population || !req.body.minwage) {
+    if (!req.body.name || !req.body.qttydistricts || !req.body.population || !req.body.birthday) {
         res.status(403).json({ message: 'One or more fields is missing.' });
         return true;
     } 
