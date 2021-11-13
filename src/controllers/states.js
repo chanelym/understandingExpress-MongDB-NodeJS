@@ -1,21 +1,5 @@
 const states = require('../models/states');
-// const validations = require('../helpers/validations');
-
-function validateInput(req, res) {
-    if (!req.body.name || !req.body.district || !req.body.population || !req.body.minwage) {
-        res.status(403).json({ message: 'One or more fields is missing.' });
-        return true;
-    }
-};
-
-function validateURLID(req, res) {
-    const id = req.params.id;
-        
-    if (id.length != 24) {
-        res.status(403).json({message: 'ID URL needs 24 characters' });
-        return true;
-    } 
-};
+const validations = require('../helpers/validations');
 
 class stateController {
 
@@ -35,7 +19,7 @@ class stateController {
     };
 
     createState = async (req, res) => {
-        validateInput(req, res);
+        validations.validateInput(req, res);
 
         await states.create(req.body).then(() => {
             res.status(200).json({ message: 'State Successfully Created' });
@@ -46,8 +30,8 @@ class stateController {
     };
 
     updateStateByID = async (req,res) => {
-        validateURLID(req, res);
-        validateInput(req, res);
+        validations.validateURLID(req, res);
+        validations.validateInput(req, res);
 
         await states.findByIdAndUpdate( req.params.id, req.bod ).then(() => { 
             res.status(200).json({ message: 'State Successfully Updated' });
@@ -58,7 +42,7 @@ class stateController {
     };
 
     deleteStateByID = async (req,res) => {
-        validateURLID(req, res);
+        validations.validateURLID(req, res);
         
         await states.findByIdAndDelete( req.params.id ).then(() => { 
             res.status(200).json({ message: 'State Successfully Removed!' });

@@ -1,21 +1,5 @@
 const countries = require('../models/countries');
-// const validations = require('../helpers/validations');
-
-function validateInput(req, res) {
-    if (!req.body.name || !req.body.population || !req.body.language || !req.body.gbp) {
-        res.status(403).json({ message: 'One or more fields is missing.' });
-        return true;
-    }
-};
-
-function validateURLID(req, res) {
-    const id = req.params.id;
-        
-    if (id.length != 24) {
-        res.status(403).json({message: 'ID URL needs 24 characters' });
-        return true;
-    } 
-};
+const validations = require('../helpers/validations');
 
 class countryController {
 
@@ -35,7 +19,7 @@ class countryController {
     };
 
     createCountry = async (req, res) => {
-        validateInput(req, res);
+        validations.validateInput(req, res);
 
         await countries.create(req.body).then(() => {
             res.status(200).json({ message: 'Country Successfully Created' });
@@ -46,8 +30,8 @@ class countryController {
     };
 
     updateCountryByID = async (req,res) => {
-        validateURLID(req, res);
-        validateInput(req, res);
+        validations.validateURLID(req, res);
+        validations.validateInput(req, res);
 
         await countries.findByIdAndUpdate( req.params.id, req.bod ).then(() => { 
             res.status(200).json({ message: 'Country Successfully Updated' });
@@ -58,7 +42,7 @@ class countryController {
     };
 
     deleteCountryByID = async (req,res) => {
-        validateURLID(req, res);
+        validations.validateURLID(req, res);
         
         await countries.findByIdAndDelete( req.params.id ).then(() => { 
             res.status(200).json({ message: 'Country Successfully Removed!' });
