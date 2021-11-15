@@ -10,6 +10,10 @@ app.use(express.json());
 
 const port = process.env.PORT || 3000;
 
+app.get('/', (req, res) => {
+    res.status(200).send('A simple NodeJS + Express.js + Mongoose RESTful API serving data about Countries, States and Cities.');
+})
+
 const countriesRoutes = require('./src/routes/countries');
 app.use('/countries', countriesRoutes);
 

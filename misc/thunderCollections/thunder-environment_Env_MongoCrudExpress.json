@@ -1,0 +1,1 @@
+{"client":"Thunder Client","environmentName":"Env_MongoCrudExpress","dateExported":"2021-11-15T01:34:37.480Z","version":"1.0","variables":[{"name":"states","value":"https://mongocrudexpress.herokuapp.com/states/"},{"name":"cities","value":"https://mongocrudexpress.herokuapp.com/cities/"},{"name":"countries","value":"https://mongocrudexpress.herokuapp.com/countries/"}]}
