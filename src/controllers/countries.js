@@ -33,7 +33,7 @@ class countryController {
         validations.validateURLID(req, res);
         validations.validateInputCountry(req, res);
 
-        await countries.findByIdAndUpdate( req.params.id, req.bod ).then(() => { 
+        await countries.findByIdAndUpdate(req.params.id, req.body).then(() => { 
             res.status(201).json({ message: 'Country Successfully Updated' });
         }).catch((err) => {
             console.error(err);

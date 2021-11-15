@@ -33,7 +33,7 @@ class stateController {
         validations.validateURLID(req, res);
         validations.validateInputState(req, res);
 
-        await states.findByIdAndUpdate( req.params.id, req.bod ).then(() => { 
+        await states.findByIdAndUpdate(req.params.id, req.body).then(() => { 
             res.status(201).json({ message: 'State Successfully Updated' });
         }).catch((err) => {
             console.error(err);

@@ -33,7 +33,7 @@ class cityController {
         validations.validateURLID(req, res);
         validations.validateInputCity(req, res);
 
-        await cities.findByIdAndUpdate( req.params.id, req.bod ).then(() => { 
+        await cities.findByIdAndUpdate(req.params.id, req.body).then(() => { 
             res.status(201).json({ message: 'City Successfully Updated' });
         }).catch((err) => {
             console.error(err);
