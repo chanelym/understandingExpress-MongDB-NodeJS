@@ -19,10 +19,10 @@ class stateController {
     };
 
     createState = async (req, res) => {
-        validations.validateInput(req, res);
+        validations.validateInputState(req, res);
 
         await states.create(req.body).then(() => {
-            res.status(200).json({ message: 'State Successfully Created' });
+            res.status(201).json({ message: 'State Successfully Created' });
         }).catch((err) => {
             res.status(400).json({ message: 'Oops! Something went Wrong' });
             console.error(err);
@@ -31,10 +31,10 @@ class stateController {
 
     updateStateByID = async (req,res) => {
         validations.validateURLID(req, res);
-        validations.validateInput(req, res);
+        validations.validateInputState(req, res);
 
         await states.findByIdAndUpdate( req.params.id, req.bod ).then(() => { 
-            res.status(200).json({ message: 'State Successfully Updated' });
+            res.status(201).json({ message: 'State Successfully Updated' });
         }).catch((err) => {
             console.error(err);
             res.status(400).json( {message: 'Oops! Something went wrong'});
@@ -45,7 +45,7 @@ class stateController {
         validations.validateURLID(req, res);
         
         await states.findByIdAndDelete( req.params.id ).then(() => { 
-            res.status(200).json({ message: 'State Successfully Removed!' });
+            res.status(201).json({ message: 'State Successfully Removed!' });
         }).catch((err) => {
             console.error(err);
             res.status(400).json({ message: 'Oops! Something went wrong' });

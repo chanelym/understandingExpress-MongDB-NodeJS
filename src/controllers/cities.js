@@ -22,7 +22,7 @@ class cityController {
         validations.validateInputCity(req, res);
 
         await cities.create(req.body).then(() => {
-            res.status(200).json({ message: 'City Successfully Created' });
+            res.status(201).json({ message: 'City Successfully Created' });
         }).catch((err) => {
             res.status(400).json({ message: 'Oops! Something went Wrong' });
             console.error(err);
@@ -34,7 +34,7 @@ class cityController {
         validations.validateInputCity(req, res);
 
         await cities.findByIdAndUpdate( req.params.id, req.bod ).then(() => { 
-            res.status(200).json({ message: 'City Successfully Updated' });
+            res.status(201).json({ message: 'City Successfully Updated' });
         }).catch((err) => {
             console.error(err);
             res.status(400).json( {message: 'Oops! Something went wrong'});
@@ -45,7 +45,7 @@ class cityController {
         validations.validateURLID(req, res);
         
         await cities.findByIdAndDelete( req.params.id ).then(() => { 
-            res.status(200).json({ message: 'City Successfully Removed!' });
+            res.status(201).json({ message: 'City Successfully Removed!' });
         }).catch((err) => {
             console.error(err);
             res.status(400).json({ message: 'Oops! Something went wrong' });

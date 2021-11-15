@@ -19,10 +19,10 @@ class countryController {
     };
 
     createCountry = async (req, res) => {
-        validations.validateInput(req, res);
+        validations.validateInputCountry(req, res);
 
         await countries.create(req.body).then(() => {
-            res.status(200).json({ message: 'Country Successfully Created' });
+            res.status(201).json({ message: 'Country Successfully Created' });
         }).catch((err) => {
             res.status(400).json({ message: 'Oops! Something went Wrong' });
             console.error(err);
@@ -31,10 +31,10 @@ class countryController {
 
     updateCountryByID = async (req,res) => {
         validations.validateURLID(req, res);
-        validations.validateInput(req, res);
+        validations.validateInputCountry(req, res);
 
         await countries.findByIdAndUpdate( req.params.id, req.bod ).then(() => { 
-            res.status(200).json({ message: 'Country Successfully Updated' });
+            res.status(201).json({ message: 'Country Successfully Updated' });
         }).catch((err) => {
             console.error(err);
             res.status(400).json( {message: 'Oops! Something went wrong'});
@@ -45,7 +45,7 @@ class countryController {
         validations.validateURLID(req, res);
         
         await countries.findByIdAndDelete( req.params.id ).then(() => { 
-            res.status(200).json({ message: 'Country Successfully Removed!' });
+            res.status(201).json({ message: 'Country Successfully Removed!' });
         }).catch((err) => {
             console.error(err);
             res.status(400).json({ message: 'Oops! Something went wrong' });
